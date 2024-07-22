@@ -1,6 +1,7 @@
 const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
 module.exports = {
   entry: {
@@ -20,6 +21,22 @@ module.exports = {
           },
         ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [autoprefixer],
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
         exclude: /node_modules/,

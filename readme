@@ -1,0 +1,4 @@
+npm run build(production)
+
+
+npm run watch(dev real-time)
